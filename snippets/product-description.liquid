@@ -2,10 +2,11 @@
   <div
     class="product__block"
     {% if animation_name %}
-    data-animation="{{ animation_name }}"
-    data-animation-duration="{{ animation_duration }}"
-    data-animation-delay="{{ animation_delay }}"
-    {% endif %}>
+      data-animation="{{ animation_name }}"
+      data-animation-duration="{{ animation_duration }}"
+      data-animation-delay="{{ animation_delay }}"
+    {% endif %}
+  >
     <div class="product-quick-add__description rte">
       {{ product.description | strip_html }}
     </div>
@@ -23,10 +24,9 @@
     <div
       class="product__block tabs-wrapper"
       {{ block.shopify_attributes }}
-      {{ block_style }}>
-      {%- render 'product-tabs'
-        , product: product
-        , block: block -%}
+      {{ block_style }}
+    >
+      {%- render 'product-tabs', product: product, block: block -%}
     </div>
   {%- endif -%}
 {%- endif -%}

@@ -55,11 +55,12 @@
   }
 {%- endstyle -%}
 
-
-<section id="IndexLook--{{ section.id }}"
+<section
+  id="IndexLook--{{ section.id }}"
   class="index-look section-padding"
   data-section-id="{{ section.id }}"
-  data-section-type="look">
+  data-section-type="look"
+>
   <div class="wrapper--full">
     {%- if section.blocks.size > 0 -%}
       {%- for block in section.blocks -%}
@@ -131,48 +132,52 @@
       <div class="look__image look__image--fullheight">
         <div class="look__image-container">
           <figure class="image-wrapper lazy-image lazy-image--backfill">
-            <img src="{{ section.settings.image | img_url:"1024x" }}" alt="product section look"></figure>
+            <img src="{{ section.settings.image | img_url:"1024x" }}" alt="product section look">
+          </figure>
           {%- if show_dots and look_dots != blank -%}
             <div class="look__dots desktop">
               {{ look_dots }}
             </div>
           {%- endif -%}
         </div>
-
       </div>
 
-      <div class="look__aside" >
-
-        <div class="look__content" >
-         {%- if section.settings.title != blank -%}
-          <h2 class="look__title ">{{ section.settings.title }}</h2>
+      <div class="look__aside">
+        <div class="look__content">
+          {%- if section.settings.title != blank -%}
+            <h2 class="look__title ">{{ section.settings.title }}</h2>
           {%- endif -%}
-          
+
           {%- if section.settings.description != blank -%}
-          <p class="look__description">{{ section.settings.description }}</p>
+            <p class="look__description">{{ section.settings.description }}</p>
           {%- endif -%}
-          
+
           {%- if section.settings.link_text != blank and section.settings.link != blank -%}
-          <a href="{{ section.settings.link }}" class="look__link">{{ section.settings.link_text }}</a>
+            <a href="{{ section.settings.link }}" class="look__link">{{ section.settings.link_text }}</a>
           {%- endif -%}
-          
+
           {%- if section.settings.sub != blank -%}
-          <p class="look__sub">{{ section.settings.sub }}</p>
+            <p class="look__sub">{{ section.settings.sub }}</p>
           {%- endif -%}
 
-
-          <button type="button"
+          <button
+            type="button"
             data-popup-close
             class="look__close mobile"
-            aria-label="{{ 'general.accessibility.close' | t }}">
+            aria-label="{{ 'general.accessibility.close' | t }}"
+          >
             {%- render 'icon-cancel' -%}
           </button>
 
-          <div class="look__slider{% if section.settings.products_per_row == '2' and section.blocks.size != 1 %} look__slider--grid{% endif %}"
+          <div
+            class="look__slider{% if section.settings.products_per_row == '2' and section.blocks.size != 1 %} look__slider--grid{% endif %}"
             data-slider-mobile="{{ section.id }}"
             data-arrow-position-middle
             data-scroll-lock-scrollable
-            {% if request.design_mode %}data-block-scroll{% endif %}>
+            {% if request.design_mode %}
+              data-block-scroll
+            {% endif %}
+          >
             {{ look_slider }}
           </div>
         </div>
@@ -181,64 +186,64 @@
   </div>
 </section>
 <style>
-  @media(min-width:1029px){
-   .look .look__image-container .image-wrapper img {
-         width: 65%;
-        right: 0;
-        left: 0;
-        margin: 0px auto;
-    height: 83%;
-    object-fit: contain;
-    top: 10%;
-}
+  @media (min-width: 1029px) {
+    .look .look__image-container .image-wrapper img {
+      width: 65%;
+      right: 0;
+      left: 0;
+      margin: 0px auto;
+      height: 83%;
+      object-fit: contain;
+      top: 10%;
+    }
     .look {
-    max-width: 88%;
-    margin: 0px auto;
-}
+      max-width: 88%;
+      margin: 0px auto;
+    }
     .look__image.look__image--fullheight {
-    position: inherit;
-}
+      position: inherit;
+    }
     .look__image-container {
-    aspect-ratio: inherit;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transform: none;
-}
+      aspect-ratio: inherit;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transform: none;
+    }
     figure.look__image-bg.image-wrapper.lazy-image.lazy-image--backfill {
-    max-width: 700px;
-    right: 0;
-    left: auto;
-}
-   .look__image-bg img.fit-cover {
-    object-fit: contain;
-}
+      max-width: 700px;
+      right: 0;
+      left: auto;
+    }
+    .look__image-bg img.fit-cover {
+      object-fit: contain;
+    }
   }
   .look__image.look__image--fullheight {
     order: 1;
-}
+  }
   .look__content {
     text-align: center;
-      padding-bottom: 5px;
-}
-.look__content .product-information {
+    padding-bottom: 5px;
+  }
+  .look__content .product-information {
     text-align: left;
     line-height: 1.4;
     background-color: #edeae3;
-}
- .look__content p.product-item__title {
+  }
+  .look__content p.product-item__title {
     font-weight: 600;
-}
-a.look__link {
+  }
+  a.look__link {
     text-decoration: none;
     position: relative;
     width: fit-content;
     padding: 15px 0;
     margin: 0px auto;
     text-transform: uppercase;
-}
-a.look__link:after {
+  }
+  a.look__link:after {
     content: '';
     width: 100%;
     position: absolute;
@@ -247,11 +252,11 @@ a.look__link:after {
 
     border-width: 0 0 1px;
     border-style: solid;
-}
+  }
   .look__sub {
     text-align: left;
     padding: 20px 0 5px 0;
-}
+  }
 </style>
 {% schema %}
 {
@@ -269,29 +274,29 @@ a.look__link:after {
       "default": "Shop the look"
     },
     {
-          "type": "textarea",
-          "id": "description",
-          "label": "Text",
-          "default": "Tell your brand's story through images."
-        },
-     {
-          "type": "text",
-          "id": "link_text",
-          "label": "Text",
-          "default": "View products",
-          "info": "Leave blank to link entire image"
-        },
-        {
-          "type": "url",
-          "id": "link",
-          "label": "Link"
-        },
-     {
-          "type": "text",
-          "id": "sub",
-          "label": "Subheading",
-          "default": "Subheading"
-        },
+      "type": "textarea",
+      "id": "description",
+      "label": "Text",
+      "default": "Tell your brand's story through images."
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Text",
+      "default": "View products",
+      "info": "Leave blank to link entire image"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    },
+    {
+      "type": "text",
+      "id": "sub",
+      "label": "Subheading",
+      "default": "Subheading"
+    },
     {
       "id": "show_dots",
       "type": "checkbox",
@@ -346,10 +351,10 @@ a.look__link:after {
       "label": "Color",
       "default": "btn--white",
       "options": [
-        {"value": "btn--primary", "label": "Primary"},
-        {"value": "btn--secondary", "label": "Secondary"},
-        {"value": "btn--white", "label": "White"},
-        {"value": "btn--black", "label": "Black"}
+        { "value": "btn--primary", "label": "Primary" },
+        { "value": "btn--secondary", "label": "Secondary" },
+        { "value": "btn--white", "label": "White" },
+        { "value": "btn--black", "label": "Black" }
       ]
     },
     {
@@ -446,23 +451,23 @@ a.look__link:after {
           "content": "Dot position"
         },
         {
-          "type":    "range",
-          "id":      "position_x",
-          "min":     0,
-          "max":     100,
-          "step":    1,
-          "label":   "Horizontal",
-          "unit":    "%",
+          "type": "range",
+          "id": "position_x",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "label": "Horizontal",
+          "unit": "%",
           "default": 50
         },
         {
-          "type":    "range",
-          "id":      "position_y",
-          "min":     0,
-          "max":     100,
-          "step":    1,
-          "label":   "Vertical",
-          "unit":    "%",
+          "type": "range",
+          "id": "position_y",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "label": "Vertical",
+          "unit": "%",
           "default": 50
         }
       ]

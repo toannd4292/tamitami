@@ -1,22 +1,22 @@
-{%- comment -%} 
-  * A cropped image that fills the container width using object-fit: cover 
-  * image {object} - The Image we will use 
-  * width {Int} - The default image width (Optional) 
-  * height {Int} - The default image height (Optional) 
-  * sizes {String} - A set of media conditions (Optional) 
-  * widths {Array} - An array of the image widths for srcset (Optional) 
-  * aspect_ratio {Float} - The aspect ratio of the image in the format {ratio}:1 (Optional) 
-  * modifier {String} - Additional classes attached to the image wrapper tag (Optional) 
-  * attributes {String} - Additional attributes attached to the image wrapper tag (Optional) 
-  * alt {String} - Overrides image alt value (Optional) 
-  * loading {String} - Default: "lazy" (Optional) 
-  * placeholder {String} - Accepted values: "image", "collection-1", "collection-2", "collection-3", "collection-4", "lifestyle-1", "lifestyle-2", "product-1", "product-2", "product-3", "product-4", "product-5", "product-6". Default: "image" (Optional) 
-  * preload {String} - "true" or "false". Default: "false" (Optional) 
-  * fetchpriority {String} - "auto", "high" or "low". Default: "auto" (Optional) 
-  * show_backfill {Boolean} - Default: true (Optional) 
+{%- comment -%}
+  * A cropped image that fills the container width using object-fit: cover
+  * image {object} - The Image we will use
+  * width {Int} - The default image width (Optional)
+  * height {Int} - The default image height (Optional)
+  * sizes {String} - A set of media conditions (Optional)
+  * widths {Array} - An array of the image widths for srcset (Optional)
+  * aspect_ratio {Float} - The aspect ratio of the image in the format {ratio}:1 (Optional)
+  * modifier {String} - Additional classes attached to the image wrapper tag (Optional)
+  * attributes {String} - Additional attributes attached to the image wrapper tag (Optional)
+  * alt {String} - Overrides image alt value (Optional)
+  * loading {String} - Default: "lazy" (Optional)
+  * placeholder {String} - Accepted values: "image", "collection-1", "collection-2", "collection-3", "collection-4", "lifestyle-1", "lifestyle-2", "product-1", "product-2", "product-3", "product-4", "product-5", "product-6". Default: "image" (Optional)
+  * preload {String} - "true" or "false". Default: "false" (Optional)
+  * fetchpriority {String} - "auto", "high" or "low". Default: "auto" (Optional)
+  * show_backfill {Boolean} - Default: true (Optional)
   *  cover {Boolean} - Whether or not we want the image wrapper to fill its container height. Default: false (Optional)
- 
-  {% render 'image', image: image, width: width, height: height, sizes: sizes, widths: widths, aspect_ratio: aspect_ratio modifier: modifier, attributes: attributes, loading: 'lazy', preload: 'false', fetchpriority: 'auto', show_backfill: true, cover: cover %} 
+
+  {% render 'image', image: image, width: width, height: height, sizes: sizes, widths: widths, aspect_ratio: aspect_ratio modifier: modifier, attributes: attributes, loading: 'lazy', preload: 'false', fetchpriority: 'auto', show_backfill: true, cover: cover %}
 {%- endcomment -%}
 
 {%- liquid
@@ -25,16 +25,16 @@
   assign aspect_ratio_mobile = aspect_ratio_mobile | default: aspect_ratio
   assign image_width = image.width | at_most: 5760 | default: 5760
   assign width = width | default: image_width
-  assign height = height | default: nil
+  assign height = height | default: null
   assign sizes = sizes | default: '100vw'
   assign widths = widths | default: '180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 1950, 2100, 2260, 2450, 2700, 3000, 3350, 3750, 4100, 4450, 4800, 5150, 5500, 5760'
   assign loading = loading | default: 'lazy'
   assign alt = alt | default: image.alt
   assign alt = alt | escape
-  assign attributes = attributes | default: nil
-  assign modifier = modifier | default: nil
-  assign fetchpriority = fetchpriority | default: nil
-  assign preload = preload | default: nil
+  assign attributes = attributes | default: null
+  assign modifier = modifier | default: null
+  assign fetchpriority = fetchpriority | default: null
+  assign preload = preload | default: null
   assign cover = cover | default: false
   assign fill = false
   assign fill_desktop = false
@@ -60,7 +60,7 @@
     endif
   endif
 
-  if show_backfill == nil
+  if show_backfill == null
     assign show_backfill = true
 
     unless image
@@ -125,16 +125,23 @@
 
 <figure class="{{ wrapper_classes }}" {{ wrapper_attributes }}>
   {%- if image -%}
-    {{ image | image_url: width: width, height: height | image_tag:
- loading: loading,
- widths: widths,
- sizes: sizes,
- srcset: srcset,
- alt: alt,
- fetchpriority: fetchpriority,
- preload: preload,
- class: img_class
-    }}
+    {% assign img_class = img_class | append: ' lazyload ' %}
+    {% capture content %}  {{ image | image_url: width: width, height: height, format: 'pjpg' | image_tag:
+      loading: loading,
+      widths: widths,
+      sizes: sizes,
+     srcset: srcset,
+      alt: alt,
+      fetchpriority: fetchpriority,
+      preload: preload,
+      class: img_class
+    }} {% endcapture %}
+    {% assign content = content
+      | replace: ' src=', ' src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="  data-src='
+      | replace: ' srcset=', ' data-srcset='
+    %}
+    {{ content }}
+
   {%- elsif placeholder != blank -%}
     {{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}
   {%- else -%}
@@ -142,6 +149,7 @@
       src="{{ 'blank.svg' | asset_url }}"
       loading="lazy"
       class="{{ img_class }}"
-      alt="blank">
+      alt="blank"
+    >
   {%- endif -%}
 </figure>

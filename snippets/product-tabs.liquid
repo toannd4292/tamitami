@@ -1,16 +1,16 @@
 <!-- /snippets/product-tabs.liquid -->
-{% comment %} 
-    Renders product tabs 
-    Accepts: 
-    - section: {Object} Current section (required) 
-    - product: {Object} Current product (optional) 
-    Usage: 
-    {% render 'product-tabs', section: section, product: product %} 
+{% comment %}
+  Renders product tabs
+  Accepts:
+  - section: {Object} Current section (required)
+  - product: {Object} Current product (optional)
+  Usage:
+  {% render 'product-tabs', section: section, product: product %}
 {% endcomment %}
 
 {%- liquid
   assign product_description_content = product.description | strip
-  if product == nil
+  if product == null
     assign product_description_content = 'home_page.onboarding.no_description' | t
   endif
 -%}
