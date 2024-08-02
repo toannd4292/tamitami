@@ -12,7 +12,7 @@
   assign formatted_initial_value = gift_card_initial_value | strip_html
 -%}
 
-<!DOCTYPE html>
+<!doctype html>
 <html class="no-js no-touch supports-no-cookies" lang="{{ request.locale.iso_code }}">
   <head>
     <meta charset="UTF-8">
@@ -24,7 +24,8 @@
       <link
         rel="shortcut icon"
         href="{{ settings.favicon | image_url: width: 32, height: 32 }}"
-        type="image/png">
+        type="image/png"
+      >
     {%- endif -%}
 
     {{ 'font-settings.css' | asset_url | stylesheet_tag }}
@@ -57,14 +58,18 @@
                     <span class="giftcard__tag">{{ 'gift_cards.issued.disabled' | t }}</span>
                   {%- endunless -%}
 
-                  {%- assign gift_card_expiry_date = gift_card.expires_on | date: "%d/%m/%y" -%}
+                  {%- assign gift_card_expiry_date = gift_card.expires_on | date: '%d/%m/%y' -%}
 
                   {%- if gift_card.expired and gift_card.enabled -%}
-                    <span class="giftcard__tag">{{ 'gift_cards.issued.expired' | t: expiry: gift_card_expiry_date }}</span>
+                    <span class="giftcard__tag">
+                      {{- 'gift_cards.issued.expired' | t: expiry: gift_card_expiry_date -}}
+                    </span>
                   {%- endif -%}
 
                   {%- if gift_card.expired != true and gift_card.expires_on and gift_card.enabled -%}
-                    <span class="giftcard__tag giftcard__tag--active">{{ 'gift_cards.issued.active' | t: expiry: gift_card_expiry_date }}</span>
+                    <span class="giftcard__tag giftcard__tag--active">
+                      {{- 'gift_cards.issued.active' | t: expiry: gift_card_expiry_date -}}
+                    </span>
                   {%- endif -%}
                 </div>
 
@@ -73,14 +78,16 @@
                     src="{{ 'gift-card/card.jpg' | shopify_asset_url }}"
                     loading="lazy"
                     alt="Gift card illustration"
-                    alt="gift card">
+                    alt="gift card"
+                  >
 
                   {%- assign initial_value_size = formatted_initial_value | size -%}
 
                   <div class="h1 giftcard__amount{% if initial_value_size > 6 %} giftcard__amount--medium{% endif %}">
                     {%- if gift_card.balance != gift_card.initial_value -%}
                       <span class="tooltip">
-                        <span class="tooltip__label">{{ gift_card_balance }}
+                        <span class="tooltip__label">
+                          {{- gift_card_balance }}
                           <small>left</small>
                         </span>
                       </span>
@@ -90,9 +97,14 @@
                   </div>
 
                   {%- assign code_size = gift_card.code | format_code | size -%}
-                  <div class="giftcard__code{% if code_size <= 25 %} giftcard__code--large{% elsif code_size > 25 and code_size <= 30 %} giftcard__code--medium{% else %} giftcard__code--small{% endif %}" onclick="selectText('GiftCardDigits');">
+                  <div
+                    class="giftcard__code{% if code_size <= 25 %} giftcard__code--large{% elsif code_size > 25 and code_size <= 30 %} giftcard__code--medium{% else %} giftcard__code--small{% endif %}"
+                    onclick="selectText('GiftCardDigits');"
+                  >
                     <div class="giftcard__code__inner">
-                      <strong class="giftcard__code__text" id="GiftCardDigits">{{ gift_card.code | format_code }}</strong>
+                      <strong class="giftcard__code__text" id="GiftCardDigits">
+                        {{- gift_card.code | format_code -}}
+                      </strong>
                     </div>
                   </div>
                 </div>
@@ -102,28 +114,33 @@
                 <div id="QrCode"></div>
 
                 <script>
-                  window.onload = function() {
+                  window.onload = function () {
                     new QRCode(document.getElementById('QrCode'), {
-                      text: "{{ gift_card.qr_identifier }}",
+                      text: '{{ gift_card.qr_identifier }}',
                       width: 120,
-                      height: 120
+                      height: 120,
                     });
-                  }
+                  };
                 </script>
 
                 <div class="giftcard__actions">
                   <a
                     href="{{ shop.url }}"
                     class="btn"
-                    target="_blank">{{ 'gift_cards.issued.shop_link' | t }}</a>
+                    target="_blank"
+                  >
+                    {{- 'gift_cards.issued.shop_link' | t -}}
+                  </a>
                   &nbsp;
 
                   <a
                     href="#"
                     class="action-link"
-                    onclick="window.print();">
+                    onclick="window.print();"
+                  >
                     <i class="action-link__print"></i>
-                    {{ 'gift_cards.issued.print' | t }}</a>
+                    {{ 'gift_cards.issued.print' | t -}}
+                  </a>
                 </div>
               </div>
             </div>
@@ -139,13 +156,15 @@
       ==============================================================================*/
       function selectText(element) {
         var doc = document,
-        text = doc.getElementById(element);
-      
-        if (doc.body.createTextRange) { // ms
+          text = doc.getElementById(element);
+
+        if (doc.body.createTextRange) {
+          // ms
           var range = doc.body.createTextRange();
           range.moveToElementText(text);
           range.select();
-        } else if (window.getSelection) { // moz, opera, webkit
+        } else if (window.getSelection) {
+          // moz, opera, webkit
           var selection = window.getSelection(),
             range = doc.createRange();
           range.selectNodeContents(text);
@@ -164,7 +183,8 @@
             loading="lazy"
             width="120"
             height="40"
-            alt="Add To Apple Wallet">
+            alt="Add To Apple Wallet"
+          >
         </a>
       </footer>
     {%- endif -%}

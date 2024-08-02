@@ -47,7 +47,6 @@
     assign menu_height = menu_height | plus: 51
   endif
 
-
   assign cart_item_count = cart.item_count
   assign cart_icon_as_circle = section.settings.icon_as_circle
 
@@ -114,7 +113,8 @@
     or settings.vimeo_link != ''
     or settings.tumblr_link != ''
     or settings.snapchat_link != ''
-    or settings.feed_link != '' -%}
+    or settings.feed_link != ''
+  -%}
     {%- assign social = true -%}
   {%- endif -%}
 {%- endif -%}
@@ -412,15 +412,18 @@
   </nav>
 {%- endcapture -%}
 
-<div class="header__wrapper"
+<div
+  class="header__wrapper"
   data-header-wrapper
   data-header-transparent="{{ transparent_header }}"
-  {% if section.settings.header_sticky %}data-header-sticky{% endif %}
+  {% if section.settings.header_sticky %}
+    data-header-sticky
+  {% endif %}
   data-header-style="{{ section.settings.header_style }}"
   data-section-id="{{ section.id }}"
   data-section-type="header"
-  {{ highlight_style }}>
-
+  {{ highlight_style }}
+>
   <header class="theme__header" role="banner" data-header-height>
     <div class="header__mobile">
       {{ minimal }}
@@ -468,37 +471,39 @@
   {{ drawer }}
 </div>
 
-<div class="header__backfill"
+<div
+  class="header__backfill"
   data-header-backfill
-  style="height: var(--menu-height);{% if transparent_header %}display: none;{% endif %}"></div>
+  style="height: var(--menu-height);{% if transparent_header %}display: none;{% endif %}"
+></div>
 
 <script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Organization",
-  "name": {{ shop.name | json }},
-  {% if logo %}
-    "logo": {{ logo | image_url: logo.width | prepend: "https:" | json }},
-  {% endif %}
-  "sameAs": [
-    {{ settings.twitter_link | json }},
-    {{ settings.facebook_link | json }},
-    {{ settings.instagram_link | json }},
-    {{ settings.pinterest_link | json }},
-    {{ settings.youtube_link | json }},
-    {{ settings.tiktok_link | json }},
-    {{ settings.linkedin_link | json }},
-    {{ settings.vimeo_link | json }},
-    {{ settings.snapchat_link | json }},
-    {{ settings.tumblr_link | json }},
-    {{ settings.feed_link | json }}
-  ],
-  "url": {{ shop.url | append: page.url | json }}
-}
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": {{ shop.name | json }},
+    {% if logo %}
+      "logo": {{ logo | image_url: logo.width | prepend: "https:" | json }},
+    {% endif %}
+    "sameAs": [
+      {{ settings.twitter_link | json }},
+      {{ settings.facebook_link | json }},
+      {{ settings.instagram_link | json }},
+      {{ settings.pinterest_link | json }},
+      {{ settings.youtube_link | json }},
+      {{ settings.tiktok_link | json }},
+      {{ settings.linkedin_link | json }},
+      {{ settings.vimeo_link | json }},
+      {{ settings.snapchat_link | json }},
+      {{ settings.tumblr_link | json }},
+      {{ settings.feed_link | json }}
+    ],
+    "url": {{ shop.url | append: page.url | json }}
+  }
 </script>
 
 {%- if template.name == 'index' -%}
-  {%- assign potential_action_target = shop.url | append: "/search?q={search_term_string}" -%}
+  {%- assign potential_action_target = shop.url | append: '/search?q={search_term_string}' -%}
   <script type="application/ld+json">
     {
       "@context": "http://schema.org",
@@ -513,6 +518,13 @@
     }
   </script>
 {%- endif -%}
+<script>
+  document.addEventListener('startasyncloading', function () {
+    document.querySelectorAll('script[data-src]').forEach((a) => {
+      (datasrc = a.dataset.src), null != datasrc && (a.src = datasrc), delete a.dataset.src;
+    });
+  });
+</script>
 
 {% schema %}
 {
@@ -535,10 +547,10 @@
       "label": "Header",
       "default": "logo_beside",
       "options": [
-        { "value": "logo_above", "label": "Logo above menu"},
-        { "value": "logo_beside", "label": "Logo beside menu"},
-        { "value": "drawer", "label": "Mobile drawer menu"},
-        { "value": "logo_center_menu_left", "label": "Logo center menu left"}
+        { "value": "logo_above", "label": "Logo above menu" },
+        { "value": "logo_beside", "label": "Logo beside menu" },
+        { "value": "drawer", "label": "Mobile drawer menu" },
+        { "value": "logo_center_menu_left", "label": "Logo center menu left" }
       ]
     },
     {
@@ -563,8 +575,8 @@
       "label": "Cart icon",
       "default": "bag",
       "options": [
-        { "value": "bag", "label": "Bag"},
-        { "value": "cart", "label": "Cart"}
+        { "value": "bag", "label": "Bag" },
+        { "value": "cart", "label": "Cart" }
       ]
     },
     {
@@ -577,13 +589,13 @@
       "label": "Image"
     },
     {
-      "type":    "range",
-      "id":      "logo_max_limit",
-      "min":     5,
-      "max":     495,
-      "step":    5,
-      "unit":    "px",
-      "label":   "Width",
+      "type": "range",
+      "id": "logo_max_limit",
+      "min": 5,
+      "max": 495,
+      "step": 5,
+      "unit": "px",
+      "label": "Width",
       "default": 120
     },
     {
@@ -722,16 +734,16 @@
           "label": "Link position in main menu",
           "default": "1",
           "options": [
-            { "value": "1", "label": "Item 1"},
-            { "value": "2", "label": "Item 2"},
-            { "value": "3", "label": "Item 3"},
-            { "value": "4", "label": "Item 4"},
-            { "value": "5", "label": "Item 5"},
-            { "value": "6", "label": "Item 6"},
-            { "value": "7", "label": "Item 7"},
-            { "value": "8", "label": "Item 8"},
-            { "value": "9", "label": "Item 9"},
-            { "value": "10", "label": "Item 10"}
+            { "value": "1", "label": "Item 1" },
+            { "value": "2", "label": "Item 2" },
+            { "value": "3", "label": "Item 3" },
+            { "value": "4", "label": "Item 4" },
+            { "value": "5", "label": "Item 5" },
+            { "value": "6", "label": "Item 6" },
+            { "value": "7", "label": "Item 7" },
+            { "value": "8", "label": "Item 8" },
+            { "value": "9", "label": "Item 9" },
+            { "value": "10", "label": "Item 10" }
           ]
         },
         {
@@ -769,7 +781,7 @@
           "min": 0,
           "max": 100,
           "step": 5,
-          "default":0
+          "default": 0
         },
         {
           "type": "color",

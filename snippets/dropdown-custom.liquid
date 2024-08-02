@@ -1,274 +1,273 @@
-                <!-- Dave - ST - Implemeting changes for Dropdown -->
-                {% assign collection = collections['all'] %}
-                {% assign hasProduct = false %}
-                {% if product.title contains '038' %}
-                            {% assign currenttitle = product.title | split: 'Heradi Ring' | first %}
-                            {% assign removtitle = product.title | split: '18K' | first %}
-                        {% elsif product.title contains '073' %}
-                            {% assign currenttitle = product.title | split: 'Heradi Necklace' | first %}
-                            {% assign removtitle1 = product.title | split: 'Heradi Necklace' | first %}
-                            {% assign removtitle = removtitle1 | append: 'Heradi Necklace' %}
-                        {% elsif product.title contains '03' %}
-                            {% assign currenttitle = product.title | split: 'Ear Cuff in' | first %}
-                            {% assign removtitle1 = product.title | split: 'in' | first %}
-                            {% assign removtitle = removtitle1 | append: 'in' %}
-                        {% elsif product.title contains '01E' %}
-                            {% assign currenttitle = product.title | split: 'E' | first %}
-                            {% assign removtitle1 = product.title | split: 'E' | first %}
-                            {% assign removtitle = removtitle1 | append: 'E' %}
-                        {% elsif product.title contains '04E' %}
-                            {% assign currenttitle = product.title | split: 'E' | first %}
-                            {% assign removtitle1 = product.title | split: 'in' | first %}
-                            {% assign removtitle = removtitle1 | append: 'in' %}
-                        {% elsif product.title contains '06E' %}
-                            {% assign currenttitle = product.title | split: 'E' | first %}
-                            {% assign removtitle1 = product.title | split: 'Earrings' | first %}
-                            {% assign removtitle = removtitle1 | append: 'Earrings' %}
-                        {% elsif product.title contains '07E' %}
-                            {% assign currenttitle = product.title | split: 'E' | first %}
-                            {% assign removtitle1 = product.title | split: 'Earrings' | first %}
-                            {% assign removtitle = removtitle1 | append: 'Earrings' %}
-                        {% elsif product.title contains '10E' %}
-                            {% assign currenttitle = product.title | split: 'E' | first %}
-                            {% assign removtitle1 = product.title | split: 'in' | first %}
-                            {% assign removtitle = removtitle1 | append: 'in' %}
-                        {% elsif product.title contains '13E' %}
-                            {% assign currenttitle = product.title | split: 'E' | first %}
-                            {% assign removtitle1 = product.title | split: 'Earrings in' | first %}
-                            {% assign removtitle = removtitle1 | append: 'Earrings in' %}
-                        {% elsif product.title contains '14E' %}
-                            {% assign currenttitle = product.title | split: 'E' | first %}
-                            {% assign removtitle1 = product.title | split: 'Earrings in' | first %}
-                            {% assign removtitle = removtitle1 | append: 'Earrings in' %}
-                        {% elsif product.title contains '28E' %}
-                            {% assign currenttitle = product.title | split: 'E' | first %}
-                            {% assign removtitle1 = product.title | split: 'Earrings in' | first %}
-                            {% assign removtitle = removtitle1 | append: 'Earrings in' %}
-                        {% elsif product.title contains '21N' %}
-                            {% assign currenttitle = product.title | split: 'N' | first %}
-                            {% assign removtitle1 = product.title | split: 'in' | first %}
-                            {% assign removtitle = removtitle1 | append: 'in' %}
-                        {% elsif product.title contains '27R' %}
-                            {% assign currenttitle = product.title | split: 'R' | first %}
-                            {% assign removtitle1 = product.title | split: 'Two' | first %}
-                            {% assign removtitle = removtitle1 | append: 'Two' %}
-                        {% elsif product.title contains '29R' %}
-                            {% assign currenttitle = product.title | split: 'R' | first %}
-                            {% assign removtitle1 = product.title | split: 'Chunky' | first %}
-                            {% assign removtitle = removtitle1 | append: 'Chunky' %}
-                        {% elsif product.title contains '37R' %}
-                            {% assign currenttitle = product.title | split: 'R' | first %}
-                            {% assign removtitle1 = product.title | split: 'Ring in' | first %}
-                            {% assign removtitle = removtitle1 | append: 'Ring in' %}
-                        {% elsif product.title contains '23R' %}
-                            {% assign currenttitle = product.title | split: 'R' | first %}
-                        {% elsif product.title contains '25R' %}
-                            {% assign currenttitle = product.title | split: 'R' | first %}
-                            {% assign removtitle1 = product.title | split: 'Rings' | first %}
-                            {% assign removtitle = removtitle1 | append: 'Rings in' %}
-                        {% elsif product.title contains '43R' %}
-                            {% assign currenttitle = product.title | split: 'R' | first %}
-                            {% assign removtitle1 = product.title | split: '43R in' | first %}
-                            {% assign removtitle = removtitle1 | append: '43R in' %}
-                        {% elsif product.title contains '20N' %}
-                            {% assign currenttitle = product.title | split: 'N' | first %}
-                            {% assign removtitle1 = product.title | split: 'Necklace' | first %}
-                            {% assign removtitle = removtitle1 | append: 'Necklace in' %}
-                        {% elsif product.title contains '038' %}
-                            {% assign currenttitle = product.title | split: 'Heradi Ring' | first %}
-                            {% assign removtitle1 = product.title | split: 'Heradi Ring' | first %}
-                            {% assign removtitle = removtitle1 | append: 'Heradi Ring' %}
-                        {% elsif product.title contains '14K' %}
-                            {% assign currenttitle = product.title | split: '14K' | first %}
-                            {% assign removtitle = product.title | split: '14K' | first %}
-                        {% elsif product.title contains '18K' %}
-                            {% assign currenttitle = product.title | split: '18K' | first %}
-                            {% assign removtitle = product.title | split: '18K' | first %}
-                        {% elsif product.title contains '14k' %}
-                            {% assign currenttitle = product.title | split: '14k' | first %}
-                            {% assign removtitle = product.title | split: '14k' | first %}
-                        {% elsif product.title contains '18k' %}
-                            {% assign currenttitle = product.title | split: '18k' | first %}
-                            {% assign removtitle = product.title | split: '18k' | first %}
-                        {% elsif product.title contains 'Ring' %}
-                            {% assign currenttitle = product.title | split: 'Ring' | first %}
-                            {% assign removtitle1 = product.title | split: 'Ring' | first %}
-                            {% assign removtitle = removtitle1 | append: 'Ring' %}
-                        {% else %}
-                            {% assign newcurrenttitle = product.title | split: ' ' %}
-                            {% assign currenttitle = '' %}
-                            {% for titles in newcurrenttitle %}
-                                {% assign currenttitle = currenttitle | append: titles %}
-                                {% assign currenttitle = currenttitle | append: ' ' %}
-                                {% assign removtitle1 = currenttitle %}
-                                {% if forloop.index == 2 %}
-                                    {% break %}
-                                {% endif %}
-                            {% endfor %}
-                        {% endif %}
+<!-- Dave - ST - Implemeting changes for Dropdown -->
+{% assign collection = collections.all %}
+{% assign hasProduct = false %}
+{% if product.title contains '038' %}
+  {% assign currenttitle = product.title | split: 'Heradi Ring' | first %}
+  {% assign removtitle = product.title | split: '18K' | first %}
+{% elsif product.title contains '073' %}
+  {% assign currenttitle = product.title | split: 'Heradi Necklace' | first %}
+  {% assign removtitle1 = product.title | split: 'Heradi Necklace' | first %}
+  {% assign removtitle = removtitle1 | append: 'Heradi Necklace' %}
+{% elsif product.title contains '03' %}
+  {% assign currenttitle = product.title | split: 'Ear Cuff in' | first %}
+  {% assign removtitle1 = product.title | split: 'in' | first %}
+  {% assign removtitle = removtitle1 | append: 'in' %}
+{% elsif product.title contains '01E' %}
+  {% assign currenttitle = product.title | split: 'E' | first %}
+  {% assign removtitle1 = product.title | split: 'E' | first %}
+  {% assign removtitle = removtitle1 | append: 'E' %}
+{% elsif product.title contains '04E' %}
+  {% assign currenttitle = product.title | split: 'E' | first %}
+  {% assign removtitle1 = product.title | split: 'in' | first %}
+  {% assign removtitle = removtitle1 | append: 'in' %}
+{% elsif product.title contains '06E' %}
+  {% assign currenttitle = product.title | split: 'E' | first %}
+  {% assign removtitle1 = product.title | split: 'Earrings' | first %}
+  {% assign removtitle = removtitle1 | append: 'Earrings' %}
+{% elsif product.title contains '07E' %}
+  {% assign currenttitle = product.title | split: 'E' | first %}
+  {% assign removtitle1 = product.title | split: 'Earrings' | first %}
+  {% assign removtitle = removtitle1 | append: 'Earrings' %}
+{% elsif product.title contains '10E' %}
+  {% assign currenttitle = product.title | split: 'E' | first %}
+  {% assign removtitle1 = product.title | split: 'in' | first %}
+  {% assign removtitle = removtitle1 | append: 'in' %}
+{% elsif product.title contains '13E' %}
+  {% assign currenttitle = product.title | split: 'E' | first %}
+  {% assign removtitle1 = product.title | split: 'Earrings in' | first %}
+  {% assign removtitle = removtitle1 | append: 'Earrings in' %}
+{% elsif product.title contains '14E' %}
+  {% assign currenttitle = product.title | split: 'E' | first %}
+  {% assign removtitle1 = product.title | split: 'Earrings in' | first %}
+  {% assign removtitle = removtitle1 | append: 'Earrings in' %}
+{% elsif product.title contains '28E' %}
+  {% assign currenttitle = product.title | split: 'E' | first %}
+  {% assign removtitle1 = product.title | split: 'Earrings in' | first %}
+  {% assign removtitle = removtitle1 | append: 'Earrings in' %}
+{% elsif product.title contains '21N' %}
+  {% assign currenttitle = product.title | split: 'N' | first %}
+  {% assign removtitle1 = product.title | split: 'in' | first %}
+  {% assign removtitle = removtitle1 | append: 'in' %}
+{% elsif product.title contains '27R' %}
+  {% assign currenttitle = product.title | split: 'R' | first %}
+  {% assign removtitle1 = product.title | split: 'Two' | first %}
+  {% assign removtitle = removtitle1 | append: 'Two' %}
+{% elsif product.title contains '29R' %}
+  {% assign currenttitle = product.title | split: 'R' | first %}
+  {% assign removtitle1 = product.title | split: 'Chunky' | first %}
+  {% assign removtitle = removtitle1 | append: 'Chunky' %}
+{% elsif product.title contains '37R' %}
+  {% assign currenttitle = product.title | split: 'R' | first %}
+  {% assign removtitle1 = product.title | split: 'Ring in' | first %}
+  {% assign removtitle = removtitle1 | append: 'Ring in' %}
+{% elsif product.title contains '23R' %}
+  {% assign currenttitle = product.title | split: 'R' | first %}
+{% elsif product.title contains '25R' %}
+  {% assign currenttitle = product.title | split: 'R' | first %}
+  {% assign removtitle1 = product.title | split: 'Rings' | first %}
+  {% assign removtitle = removtitle1 | append: 'Rings in' %}
+{% elsif product.title contains '43R' %}
+  {% assign currenttitle = product.title | split: 'R' | first %}
+  {% assign removtitle1 = product.title | split: '43R in' | first %}
+  {% assign removtitle = removtitle1 | append: '43R in' %}
+{% elsif product.title contains '20N' %}
+  {% assign currenttitle = product.title | split: 'N' | first %}
+  {% assign removtitle1 = product.title | split: 'Necklace' | first %}
+  {% assign removtitle = removtitle1 | append: 'Necklace in' %}
+{% elsif product.title contains '038' %}
+  {% assign currenttitle = product.title | split: 'Heradi Ring' | first %}
+  {% assign removtitle1 = product.title | split: 'Heradi Ring' | first %}
+  {% assign removtitle = removtitle1 | append: 'Heradi Ring' %}
+{% elsif product.title contains '14K' %}
+  {% assign currenttitle = product.title | split: '14K' | first %}
+  {% assign removtitle = product.title | split: '14K' | first %}
+{% elsif product.title contains '18K' %}
+  {% assign currenttitle = product.title | split: '18K' | first %}
+  {% assign removtitle = product.title | split: '18K' | first %}
+{% elsif product.title contains '14k' %}
+  {% assign currenttitle = product.title | split: '14k' | first %}
+  {% assign removtitle = product.title | split: '14k' | first %}
+{% elsif product.title contains '18k' %}
+  {% assign currenttitle = product.title | split: '18k' | first %}
+  {% assign removtitle = product.title | split: '18k' | first %}
+{% elsif product.title contains 'Ring' %}
+  {% assign currenttitle = product.title | split: 'Ring' | first %}
+  {% assign removtitle1 = product.title | split: 'Ring' | first %}
+  {% assign removtitle = removtitle1 | append: 'Ring' %}
+{% else %}
+  {% assign newcurrenttitle = product.title | split: ' ' %}
+  {% assign currenttitle = '' %}
+  {% for titles in newcurrenttitle %}
+    {% assign currenttitle = currenttitle | append: titles %}
+    {% assign currenttitle = currenttitle | append: ' ' %}
+    {% assign removtitle1 = currenttitle %}
+    {% if forloop.index == 2 %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
 
-                {% paginate collection.products by 100000 %}
-                    {% for Product in collection.products %}
-                        {% if Product.title contains currenttitle %}
-                          {% unless product.featured_image == Product.featured_image %}
-                            {% assign hasProduct = true %}
-                          {% endunless %}
-                        {% endif %}
-                    {% endfor %}
-                {% endpaginate %}
-                
-                {% if hasProduct %}
-                    <span class="radio__legend__label">Choose Option:</span>
-                    <div class="newvariantbox">
-                        <div class="currentProduct">
-                            <div class="submainproduct">
-                                <div class="imagest">
-                                    <img src="{{ product.featured_image | img_url: 'master' }}" alt={{product.title}}>
-                                </div>
-                                <div class="description">
-                                    {% if product.title contains 'Not Vermeil' %}
-                                    {{ product.title | replace: removtitle,'' | replace: 'Not Vermeil', 'Sterling Silver' }}
-                                    {% else %}
-                                    {{ product.title | replace: removtitle,'' }}
-                                    {% endif %}
-                                </div>
-                            </div>
-                            <div class="d-icon-arrow-down"><svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5.02173 9L12.0522 16L19.0827 9" stroke="black" stroke-linecap="square"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="dropdownlist">
-                        {% if product.title contains '038' %}
-                            {% assign currenttitle = product.title | split: 'Heradi Ring' | first %}
-                            {% assign removtitle = product.title | split: '18K' | first %}
-                        {% elsif product.title contains '073' %}
-                            {% assign currenttitle = product.title | split: 'Heradi Necklace' | first %}
-                            {% assign removtitle1 = product.title | split: 'Heradi Necklace' | first %}
-                            {% assign removtitle = removtitle1 | append: 'Heradi Necklace' %}
-                        {% elsif product.title contains '03' %}
-                            {% assign currenttitle = product.title | split: 'Ear Cuff in' | first %}
-                            {% assign removtitle1 = product.title | split: 'in' | first %}
-                            {% assign removtitle = removtitle1 | append: 'in' %}
-                        {% elsif product.title contains '01E' %}
-                            {% assign currenttitle = product.title | split: 'E' | first %}
-                            {% assign removtitle1 = product.title | split: 'E' | first %}
-                            {% assign removtitle = removtitle1 | append: 'E' %}
-                        {% elsif product.title contains '04E' %}
-                            {% assign currenttitle = product.title | split: 'E' | first %}
-                            {% assign removtitle1 = product.title | split: 'in' | first %}
-                            {% assign removtitle = removtitle1 | append: 'in' %}
-                        {% elsif product.title contains '06E' %}
-                            {% assign currenttitle = product.title | split: 'E' | first %}
-                            {% assign removtitle1 = product.title | split: 'Earrings' | first %}
-                            {% assign removtitle = removtitle1 | append: 'Earrings' %}
-                        {% elsif product.title contains '07E' %}
-                            {% assign currenttitle = product.title | split: 'E' | first %}
-                            {% assign removtitle1 = product.title | split: 'Earrings' | first %}
-                            {% assign removtitle = removtitle1 | append: 'Earrings' %}
-                        {% elsif product.title contains '10E' %}
-                            {% assign currenttitle = product.title | split: 'E' | first %}
-                            {% assign removtitle1 = product.title | split: 'in' | first %}
-                            {% assign removtitle = removtitle1 | append: 'in' %}
-                        {% elsif product.title contains '13E' %}
-                            {% assign currenttitle = product.title | split: 'E' | first %}
-                            {% assign removtitle1 = product.title | split: 'Earrings in' | first %}
-                            {% assign removtitle = removtitle1 | append: 'Earrings in' %}
-                        {% elsif product.title contains '14E' %}
-                            {% assign currenttitle = product.title | split: 'E' | first %}
-                            {% assign removtitle1 = product.title | split: 'Earrings in' | first %}
-                            {% assign removtitle = removtitle1 | append: 'Earrings in' %}
-                        {% elsif product.title contains '28E' %}
-                            {% assign currenttitle = product.title | split: 'E' | first %}
-                            {% assign removtitle1 = product.title | split: 'Earrings in' | first %}
-                            {% assign removtitle = removtitle1 | append: 'Earrings in' %}
-                        {% elsif product.title contains '21N' %}
-                            {% assign currenttitle = product.title | split: 'N' | first %}
-                            {% assign removtitle1 = product.title | split: 'in' | first %}
-                            {% assign removtitle = removtitle1 | append: 'in' %}
-                        {% elsif product.title contains '27R' %}
-                            {% assign currenttitle = product.title | split: 'R' | first %}
-                            {% assign removtitle1 = product.title | split: 'Two' | first %}
-                            {% assign removtitle = removtitle1 | append: 'Two' %}
-                        {% elsif product.title contains '29R' %}
-                            {% assign currenttitle = product.title | split: 'R' | first %}
-                            {% assign removtitle1 = product.title | split: 'Chunky' | first %}
-                            {% assign removtitle = removtitle1 | append: 'Chunky' %}
-                        {% elsif product.title contains '37R' %}
-                            {% assign currenttitle = product.title | split: 'R' | first %}
-                            {% assign removtitle1 = product.title | split: 'Ring in' | first %}
-                            {% assign removtitle = removtitle1 | append: 'Ring in' %}
-                        {% elsif product.title contains '23R' %}
-                            {% assign currenttitle = product.title | split: 'R' | first %}
-                        {% elsif product.title contains '25R' %}
-                            {% assign currenttitle = product.title | split: 'R' | first %}
-                            {% assign removtitle1 = product.title | split: 'Rings' | first %}
-                            {% assign removtitle = removtitle1 | append: 'Rings in' %}
-                        {% elsif product.title contains '43R' %}
-                            {% assign currenttitle = product.title | split: 'R' | first %}
-                            {% assign removtitle1 = product.title | split: '43R in' | first %}
-                            {% assign removtitle = removtitle1 | append: '43R in' %}
-                        {% elsif product.title contains '20N' %}
-                            {% assign currenttitle = product.title | split: 'N' | first %}
-                            {% assign removtitle1 = product.title | split: 'Necklace' | first %}
-                            {% assign removtitle = removtitle1 | append: 'Necklace in' %}
-                        {% elsif product.title contains '038' %}
-                            {% assign currenttitle = product.title | split: 'Heradi Ring' | first %}
-                            {% assign removtitle1 = product.title | split: 'Heradi Ring' | first %}
-                            {% assign removtitle = removtitle1 | append: 'Heradi Ring' %}
-                        {% elsif product.title contains '14K' %}
-                            {% assign currenttitle = product.title | split: '14K' | first %}
-                            {% assign removtitle = product.title | split: '14K' | first %}
-                        {% elsif product.title contains '18K' %}
-                            {% assign currenttitle = product.title | split: '18K' | first %}
-                            {% assign removtitle = product.title | split: '18K' | first %}
-                        {% elsif product.title contains '14k' %}
-                            {% assign currenttitle = product.title | split: '14k' | first %}
-                            {% assign removtitle = product.title | split: '14k' | first %}
-                        {% elsif product.title contains '18k' %}
-                            {% assign currenttitle = product.title | split: '18k' | first %}
-                            {% assign removtitle = product.title | split: '18k' | first %}
-                        {% elsif product.title contains 'Ring' %}
-                            {% assign currenttitle = product.title | split: 'Ring' | first %}
-                            {% assign removtitle1 = product.title | split: 'Ring' | first %}
-                            {% assign removtitle = removtitle1 | append: 'Ring' %}
-                        {% else %}
-                            {% assign newcurrenttitle = product.title | split: ' ' %}
-                            {% assign currenttitle = '' %}
-                            {% for titles in newcurrenttitle %}
-                                {% assign currenttitle = currenttitle | append: titles %}
-                                {% assign currenttitle = currenttitle | append: ' ' %}
-                                {% assign removtitle1 = currenttitle %}
-                                {% if forloop.index == 2 %}
-                                    {% break %}
-                                {% endif %}
-                            {% endfor %}
-                        {% endif %}
-                        {% assign collection = collections['all'] %}
-                        {% paginate collection.products by 100000 %}
-                            {% for Product in collection.products %}
-                                {% if Product.title contains currenttitle %}
-                                    {% unless product.featured_image == Product.featured_image %}
-                                    <div class="currentProduct">
-                                        <a href="{{ Product.url }}" class="productlink">
-                                            <div class="imagest">
-                                                <img src="{{ Product.featured_image | img_url: 'master' }}" alt={{product.title}}>
-                                            </div>
-                                            <div class="description">
-                                                {% if Product.title contains 'Not Vermeil' %}
-                                                {{ Product.title | replace: removtitle,'' | replace: 'Not Vermeil', 'Sterling Silver' }}
-                                                {% else %}
-                                                {{ Product.title | replace: removtitle,'' }}
-                                                {% endif %}
-                                            </div>
-                                        </a>
-                                    </div>
-                                    {% endunless %}
-                                {% endif %}
-                            {% endfor %}
-                        {% endpaginate %}
-                        </div>
-                    </div>
-                {% endif %}
+{% paginate collection.products by 100000 %}
+  {% for Product in collection.products %}
+    {% if Product.title contains currenttitle %}
+      {% unless product.featured_image == Product.featured_image %}
+        {% assign hasProduct = true %}
+      {% endunless %}
+    {% endif %}
+  {% endfor %}
+{% endpaginate %}
 
-               
+{% if hasProduct %}
+  <span class="radio__legend__label">Choose Option:</span>
+  <div class="newvariantbox">
+    <div class="currentProduct">
+      <div class="submainproduct">
+        <div class="imagest">
+          <img src="{{ product.featured_image | img_url: 'master' }}" alt="{{product.title}}">
+        </div>
+        <div class="description">
+          {% if product.title contains 'Not Vermeil' %}
+            {{ product.title | replace: removtitle, '' | replace: 'Not Vermeil', 'Sterling Silver' }}
+          {% else %}
+            {{ product.title | replace: removtitle, '' }}
+          {% endif %}
+        </div>
+      </div>
+      <div class="d-icon-arrow-down">
+        <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5.02173 9L12.0522 16L19.0827 9" stroke="black" stroke-linecap="square"></path>
+        </svg>
+      </div>
+    </div>
+    <div class="dropdownlist">
+      {% if product.title contains '038' %}
+        {% assign currenttitle = product.title | split: 'Heradi Ring' | first %}
+        {% assign removtitle = product.title | split: '18K' | first %}
+      {% elsif product.title contains '073' %}
+        {% assign currenttitle = product.title | split: 'Heradi Necklace' | first %}
+        {% assign removtitle1 = product.title | split: 'Heradi Necklace' | first %}
+        {% assign removtitle = removtitle1 | append: 'Heradi Necklace' %}
+      {% elsif product.title contains '03' %}
+        {% assign currenttitle = product.title | split: 'Ear Cuff in' | first %}
+        {% assign removtitle1 = product.title | split: 'in' | first %}
+        {% assign removtitle = removtitle1 | append: 'in' %}
+      {% elsif product.title contains '01E' %}
+        {% assign currenttitle = product.title | split: 'E' | first %}
+        {% assign removtitle1 = product.title | split: 'E' | first %}
+        {% assign removtitle = removtitle1 | append: 'E' %}
+      {% elsif product.title contains '04E' %}
+        {% assign currenttitle = product.title | split: 'E' | first %}
+        {% assign removtitle1 = product.title | split: 'in' | first %}
+        {% assign removtitle = removtitle1 | append: 'in' %}
+      {% elsif product.title contains '06E' %}
+        {% assign currenttitle = product.title | split: 'E' | first %}
+        {% assign removtitle1 = product.title | split: 'Earrings' | first %}
+        {% assign removtitle = removtitle1 | append: 'Earrings' %}
+      {% elsif product.title contains '07E' %}
+        {% assign currenttitle = product.title | split: 'E' | first %}
+        {% assign removtitle1 = product.title | split: 'Earrings' | first %}
+        {% assign removtitle = removtitle1 | append: 'Earrings' %}
+      {% elsif product.title contains '10E' %}
+        {% assign currenttitle = product.title | split: 'E' | first %}
+        {% assign removtitle1 = product.title | split: 'in' | first %}
+        {% assign removtitle = removtitle1 | append: 'in' %}
+      {% elsif product.title contains '13E' %}
+        {% assign currenttitle = product.title | split: 'E' | first %}
+        {% assign removtitle1 = product.title | split: 'Earrings in' | first %}
+        {% assign removtitle = removtitle1 | append: 'Earrings in' %}
+      {% elsif product.title contains '14E' %}
+        {% assign currenttitle = product.title | split: 'E' | first %}
+        {% assign removtitle1 = product.title | split: 'Earrings in' | first %}
+        {% assign removtitle = removtitle1 | append: 'Earrings in' %}
+      {% elsif product.title contains '28E' %}
+        {% assign currenttitle = product.title | split: 'E' | first %}
+        {% assign removtitle1 = product.title | split: 'Earrings in' | first %}
+        {% assign removtitle = removtitle1 | append: 'Earrings in' %}
+      {% elsif product.title contains '21N' %}
+        {% assign currenttitle = product.title | split: 'N' | first %}
+        {% assign removtitle1 = product.title | split: 'in' | first %}
+        {% assign removtitle = removtitle1 | append: 'in' %}
+      {% elsif product.title contains '27R' %}
+        {% assign currenttitle = product.title | split: 'R' | first %}
+        {% assign removtitle1 = product.title | split: 'Two' | first %}
+        {% assign removtitle = removtitle1 | append: 'Two' %}
+      {% elsif product.title contains '29R' %}
+        {% assign currenttitle = product.title | split: 'R' | first %}
+        {% assign removtitle1 = product.title | split: 'Chunky' | first %}
+        {% assign removtitle = removtitle1 | append: 'Chunky' %}
+      {% elsif product.title contains '37R' %}
+        {% assign currenttitle = product.title | split: 'R' | first %}
+        {% assign removtitle1 = product.title | split: 'Ring in' | first %}
+        {% assign removtitle = removtitle1 | append: 'Ring in' %}
+      {% elsif product.title contains '23R' %}
+        {% assign currenttitle = product.title | split: 'R' | first %}
+      {% elsif product.title contains '25R' %}
+        {% assign currenttitle = product.title | split: 'R' | first %}
+        {% assign removtitle1 = product.title | split: 'Rings' | first %}
+        {% assign removtitle = removtitle1 | append: 'Rings in' %}
+      {% elsif product.title contains '43R' %}
+        {% assign currenttitle = product.title | split: 'R' | first %}
+        {% assign removtitle1 = product.title | split: '43R in' | first %}
+        {% assign removtitle = removtitle1 | append: '43R in' %}
+      {% elsif product.title contains '20N' %}
+        {% assign currenttitle = product.title | split: 'N' | first %}
+        {% assign removtitle1 = product.title | split: 'Necklace' | first %}
+        {% assign removtitle = removtitle1 | append: 'Necklace in' %}
+      {% elsif product.title contains '038' %}
+        {% assign currenttitle = product.title | split: 'Heradi Ring' | first %}
+        {% assign removtitle1 = product.title | split: 'Heradi Ring' | first %}
+        {% assign removtitle = removtitle1 | append: 'Heradi Ring' %}
+      {% elsif product.title contains '14K' %}
+        {% assign currenttitle = product.title | split: '14K' | first %}
+        {% assign removtitle = product.title | split: '14K' | first %}
+      {% elsif product.title contains '18K' %}
+        {% assign currenttitle = product.title | split: '18K' | first %}
+        {% assign removtitle = product.title | split: '18K' | first %}
+      {% elsif product.title contains '14k' %}
+        {% assign currenttitle = product.title | split: '14k' | first %}
+        {% assign removtitle = product.title | split: '14k' | first %}
+      {% elsif product.title contains '18k' %}
+        {% assign currenttitle = product.title | split: '18k' | first %}
+        {% assign removtitle = product.title | split: '18k' | first %}
+      {% elsif product.title contains 'Ring' %}
+        {% assign currenttitle = product.title | split: 'Ring' | first %}
+        {% assign removtitle1 = product.title | split: 'Ring' | first %}
+        {% assign removtitle = removtitle1 | append: 'Ring' %}
+      {% else %}
+        {% assign newcurrenttitle = product.title | split: ' ' %}
+        {% assign currenttitle = '' %}
+        {% for titles in newcurrenttitle %}
+          {% assign currenttitle = currenttitle | append: titles %}
+          {% assign currenttitle = currenttitle | append: ' ' %}
+          {% assign removtitle1 = currenttitle %}
+          {% if forloop.index == 2 %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+      {% assign collection = collections.all %}
+      {% paginate collection.products by 100000 %}
+        {% for Product in collection.products %}
+          {% if Product.title contains currenttitle %}
+            {% unless product.featured_image == Product.featured_image %}
+              <div class="currentProduct">
+                <a href="{{ Product.url }}" class="productlink">
+                  <div class="imagest">
+                    <img src="{{ Product.featured_image | img_url: 'master' }}" alt="{{product.title}}">
+                  </div>
+                  <div class="description">
+                    {% if Product.title contains 'Not Vermeil' %}
+                      {{ Product.title | replace: removtitle, '' | replace: 'Not Vermeil', 'Sterling Silver' }}
+                    {% else %}
+                      {{ Product.title | replace: removtitle, '' }}
+                    {% endif %}
+                  </div>
+                </a>
+              </div>
+            {% endunless %}
+          {% endif %}
+        {% endfor %}
+      {% endpaginate %}
+    </div>
+  </div>
+{% endif %}
