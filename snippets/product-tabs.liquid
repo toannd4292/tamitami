@@ -1,0 +1,55 @@
+<!-- /snippets/product-tabs.liquid -->
+{% comment %} 
+    Renders product tabs 
+    Accepts: 
+    - section: {Object} Current section (required) 
+    - product: {Object} Current product (optional) 
+    Usage: 
+    {% render 'product-tabs', section: section, product: product %} 
+{% endcomment %}
+
+{%- liquid
+  assign product_description_content = product.description | strip
+  if product == nil
+    assign product_description_content = 'home_page.onboarding.no_description' | t
+  endif
+-%}
+
+{%- if block.settings.style == 'tabs' -%}
+  {%- assign tab_links_html = '' -%}
+  {%- assign tab_contents_html = '' -%}
+  {%- assign count = 0 -%}
+
+  {%- if product_description_content != blank -%}
+    {%- capture tab_links_html -%}
+      <li class="tab-link tab-link-0 current" data-block-id="{{ section.id | append: '-0' }}" data-tab="0" tabindex="0" data-attributes-placeholder>
+        <span>{{ 'products.general.description' | t }}</span>
+      </li>
+    {%- endcapture -%}
+
+    {%- capture tab_contents_html -%}
+      <div class="tab-content tab-content-0 current rte">
+        <div class="tab-content__holder">
+          <div class="tab-content__inner">
+            <div class="tab-content__entry">
+              {{ product_description_content }}
+            </div>
+          </div>
+        </div>
+      </div>
+    {%- endcapture -%}
+
+    {%- assign count = 1 -%}
+  {%- endif -%}
+
+  <!-- Continue your existing code for other tabs -->
+
+  {%- if tab_contents_html -%}
+    <div class="product-tabs" data-tabs-holder>
+      <!-- Existing tab navigation code -->
+      {{ tab_contents_html }}
+    </div>
+  {%- endif -%}
+{%- elsif block.settings.style == 'accordions' -%}
+  <!-- Continue with your existing accordion logic without truncation -->
+{%- endif -%}

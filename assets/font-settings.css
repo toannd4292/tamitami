@@ -1,0 +1,67 @@
+@font-face {
+  font-family: "Fjalla One";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("//tami-tami-london.com/cdn/fonts/fjalla_one/fjallaone_n4.e3b041743e726c1cef3b3ab9921402e93cd8f733.woff2?h1=dGFtaWFuZHRhbmktbG9uZG9uLmNvbQ&h2=dGFtaS10YW1pLWxvbmRvbi5jb20&h3=dGFtaWFuZHRhbmllZGl0aW9uLmFjY291bnQubXlzaG9waWZ5LmNvbQ&hmac=4b4eacd1ed9f8d8a46e710960f4818fd2431649c46ff4e7b0f229863b6f37656") format("woff2"),
+       url("//tami-tami-london.com/cdn/fonts/fjalla_one/fjallaone_n4.bed9b46f46027aa055f567c064cca454e8db0b22.woff?h1=dGFtaWFuZHRhbmktbG9uZG9uLmNvbQ&h2=dGFtaS10YW1pLWxvbmRvbi5jb20&h3=dGFtaWFuZHRhbmllZGl0aW9uLmFjY291bnQubXlzaG9waWZ5LmNvbQ&hmac=c1c9262ce0fff4b6bb105cdd6b33798913d10f66ccd43cdb72d99a9585b948e7") format("woff");
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("//tami-tami-london.com/cdn/fonts/montserrat/montserrat_n4.1d581f6d4bf1a97f4cbc0b88b933bc136d38d178.woff2?h1=dGFtaWFuZHRhbmktbG9uZG9uLmNvbQ&h2=dGFtaS10YW1pLWxvbmRvbi5jb20&h3=dGFtaWFuZHRhbmllZGl0aW9uLmFjY291bnQubXlzaG9waWZ5LmNvbQ&hmac=418d4c7c49428a7afc67ec72282f20f29af3aa537f7279303d3cee20dfec0767") format("woff2"),
+       url("//tami-tami-london.com/cdn/fonts/montserrat/montserrat_n4.cfce41a967758ce5a9b7d48daeb5b028fd977a9b.woff?h1=dGFtaWFuZHRhbmktbG9uZG9uLmNvbQ&h2=dGFtaS10YW1pLWxvbmRvbi5jb20&h3=dGFtaWFuZHRhbmllZGl0aW9uLmFjY291bnQubXlzaG9waWZ5LmNvbQ&hmac=021c1a43d15acba2e4690a2a262343e31dcdfabfb290d4d4cca257d34aa44f27") format("woff");
+}
+
+@font-face {
+  font-family: Lato;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("//tami-tami-london.com/cdn/fonts/lato/lato_n4.c86cddcf8b15d564761aaa71b6201ea326f3648b.woff2?h1=dGFtaWFuZHRhbmktbG9uZG9uLmNvbQ&h2=dGFtaS10YW1pLWxvbmRvbi5jb20&h3=dGFtaWFuZHRhbmllZGl0aW9uLmFjY291bnQubXlzaG9waWZ5LmNvbQ&hmac=6c9f8a6df72f3f780db40d6ff4ef43d04fb11b1c3733e23275c814680df06ac5") format("woff2"),
+       url("//tami-tami-london.com/cdn/fonts/lato/lato_n4.e0ee1e2c008a0f429542630edf70be01045ac5e9.woff?h1=dGFtaWFuZHRhbmktbG9uZG9uLmNvbQ&h2=dGFtaS10YW1pLWxvbmRvbi5jb20&h3=dGFtaWFuZHRhbmllZGl0aW9uLmFjY291bnQubXlzaG9waWZ5LmNvbQ&hmac=ef5288e220b4e773d607ddc7404a7c2ce62e23663bdc28a68e70c6c1943ce227") format("woff");
+}
+
+
+
+
+
+  @font-face {
+  font-family: Montserrat;
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url("//tami-tami-london.com/cdn/fonts/montserrat/montserrat_n5.e72d00d31ae5399d260a80ec70322c62c1819762.woff2?h1=dGFtaWFuZHRhbmktbG9uZG9uLmNvbQ&h2=dGFtaS10YW1pLWxvbmRvbi5jb20&h3=dGFtaWFuZHRhbmllZGl0aW9uLmFjY291bnQubXlzaG9waWZ5LmNvbQ&hmac=168310716eb286c11ab0c5e3c5fadab50f9221f4ca2ba05bcb3417064db03d40") format("woff2"),
+       url("//tami-tami-london.com/cdn/fonts/montserrat/montserrat_n5.18a018b6c83e89030c5d70a6d4c02c969f228500.woff?h1=dGFtaWFuZHRhbmktbG9uZG9uLmNvbQ&h2=dGFtaS10YW1pLWxvbmRvbi5jb20&h3=dGFtaWFuZHRhbmllZGl0aW9uLmFjY291bnQubXlzaG9waWZ5LmNvbQ&hmac=4a75dce91a838ae252cca6679fe3d67dfb53b591534932ec6cf0a21074e8cdae") format("woff");
+}
+
+
+
+
+
+
+
+  @font-face {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  src: url("//tami-tami-london.com/cdn/fonts/montserrat/montserrat_i4.ae02483b3d5e8777d0d4a4ccf396482c364d8955.woff2?h1=dGFtaWFuZHRhbmktbG9uZG9uLmNvbQ&h2=dGFtaS10YW1pLWxvbmRvbi5jb20&h3=dGFtaWFuZHRhbmllZGl0aW9uLmFjY291bnQubXlzaG9waWZ5LmNvbQ&hmac=c3b5d6156274be55348b9d67c8adcb79fd24695b527b474b7c63577cf2998968") format("woff2"),
+       url("//tami-tami-london.com/cdn/fonts/montserrat/montserrat_i4.ba28d1a04ec09448de486d83c63235903dfc0af8.woff?h1=dGFtaWFuZHRhbmktbG9uZG9uLmNvbQ&h2=dGFtaS10YW1pLWxvbmRvbi5jb20&h3=dGFtaWFuZHRhbmllZGl0aW9uLmFjY291bnQubXlzaG9waWZ5LmNvbQ&hmac=b40734449eff9f47c494a9466b5513009149d02a909e3e70bc1069887f4500f2") format("woff");
+}
+
+
+
+
+  @font-face {
+  font-family: Montserrat;
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+  src: url("//tami-tami-london.com/cdn/fonts/montserrat/montserrat_i5.3a4750a300f30824a43384268712b76e0a04be8c.woff2?h1=dGFtaWFuZHRhbmktbG9uZG9uLmNvbQ&h2=dGFtaS10YW1pLWxvbmRvbi5jb20&h3=dGFtaWFuZHRhbmllZGl0aW9uLmFjY291bnQubXlzaG9waWZ5LmNvbQ&hmac=1519a107df3c92f7a191debc07d1c07a52c79e14c854bbfd2c4bd8267d6c8e94") format("woff2"),
+       url("//tami-tami-london.com/cdn/fonts/montserrat/montserrat_i5.3c586d8884de1ac5627138711567f5b454adbef8.woff?h1=dGFtaWFuZHRhbmktbG9uZG9uLmNvbQ&h2=dGFtaS10YW1pLWxvbmRvbi5jb20&h3=dGFtaWFuZHRhbmllZGl0aW9uLmFjY291bnQubXlzaG9waWZ5LmNvbQ&hmac=a27120486a3ecd353085dedf25dfa1f8270f826af1cd0865b030f51d01fa1dfc") format("woff");
+}
+

@@ -1,0 +1,90 @@
+{% for option in product.options_with_values %}
+  {% assign optionHandle = option.name | handle %}
+  {% if optionHandle == 'color' %}
+    
+    {% for value in option.values %}
+      
+      {% assign unique = forloop.index %}
+      <div id="Product--{{ unique }}"
+        class="index-product section-paddings product-image-sliders product-image-slider-{{ value | handle }} {% unless forloop.first %} hide_slider {% endunless %}"
+        data-section-id="{{ unique }}"
+        data-section-type="product"
+        data-product-handle="{{ product.handle }}"
+        data-enable-history-state="true"
+        data-sticky-enabled="{{ section.settings.product_sticky_enable }}"
+        data-tall-layout="{% if section.settings.image_layout == 'stacked' or section.settings.image_layout == 'grid-1' or section.settings.image_layout == 'grid-2' %}true{% else %}false{% endif %}"
+        data-slideshow-disabled-mobile='{% if section.settings.mobile_image_style == 'slider' %}true{% else %}false{% endif %}'
+        data-cart-bar="{{ show_cart_bar }}"
+        data-image-zoom-enable="{{ section.settings.enable_zoom }}">
+      
+        <div class="product__wrappers {{ product_wrapper_modifier }}" data-product>
+          <div class="product__wrapper__inner">
+            <div class="product__pages">
+              <div class="product__images{% if mobile_image_style == 'slider' %} product__images--no-thumbs{% else %} product__images--has-thumbs{% endif %}">
+                {%- if product.media.size > 0 -%}
+                  <div class="product__slides product-single__photos"
+                    style="--featured-media-aspect-ratio: {{ featured_media_aspect_ratio | round: 2 }};"
+                    data-product-slideshow
+                    data-product-single-media-group
+                    data-options='{"prevNextButtons": false, "contain": true, "adaptiveHeight": true, "fade": true}'>
+                    {%- for media in product.media -%}
+                      {% assign altMedia = media.alt | strip %}
+                      {% if value == altMedia %}
+                        {%- render 'media', media: media, featured_media: featured_media, enable_video_looping: enable_video_looping, sectionkey: unique, image_width: image_width, cover: true -%}
+                      {% endif %}
+                    {%- endfor -%}
+                  </div>
+        
+                  {%- if enable_thumbnails and product.media.size > 1 -%}
+                    <div class="product__thumbs" data-product-thumbs>
+                      <div class="product__thumbs__holder" data-thumbs-slider>
+                        {% assign indexTemp = -1 %}
+                        {%- for media in product.media -%}
+                          
+                          {% assign altMedia = media.alt | strip %}
+                          {% if value == altMedia %}         
+                          {% assign indexTemp = indexTemp | plus: 1 %}
+                          <div class="product__thumb{% if indexTemp == 0 %} is-active{% endif %}" data-thumb-item>
+                            <a
+                              class="product__thumb__link"
+                              href="{{ media.preview_image.src }}"
+                              aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+                              data-media-id="{{ section.id }}-{{ media.id }}"
+                              data-thumb-index="{{ indexTemp }}"
+                              data-thumb-link>
+                              {%- liquid
+                                render 'image' image: media.preview_image, width: 150, height: 150, sizes: '75px', widths: '75, 100, 150, 225, 300', aspect_ratio: 1
+        
+                                if media.media_type == 'video' or media.media_type == 'external_video'
+                                  render 'icon-media-video'
+                                elsif media.media_type == 'model'
+                                  render 'icon-media-model'
+                                endif
+                              -%}
+                            </a>
+                          </div>
+                          {% endif %}
+                          
+                        {%- endfor -%}
+                      </div>
+                    </div>
+                  {%- endif -%}
+                {%- else -%}
+                  <div class="product__slides product__slides--{{ image_size }} product-single__photos" data-product-slideshow data-product-single-media-group>
+                    <div class="product__photo product__photo--blank product__slide"></div>
+                  </div>
+                {%- endif -%}
+              </div>
+        
+            </div>
+          </div>
+        </div>
+      
+      </div>
+
+      
+    {% endfor %}
+    
+  {% endif %}
+  
+{% endfor %}

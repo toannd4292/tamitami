@@ -1,0 +1,617 @@
+{% assign lazy_loading = section.settings.lazy_loading %}
+<div class="{% if section.settings.section_space == true %}section-space{% endif %} relative">
+  <div class="w-full" style="background-color:{{ section.settings.bg_color }};">
+  {% if section.settings.custom_settings_padding == true %}<div class="section-{{ section.id }}-padding">{% endif %}
+    <div class="hero--wrapper--{{ section.id }}" {% if section.settings.custom_settings_padding == false %}style="padding-top:10px;padding-bottom:10px"{% endif %}>
+
+      {% if section.settings.bg_image != blank %}
+      <img class="w-full {% if section.settings.bg_image_mobile != blank %}max--768--hide{% endif %}" src="{{ section.settings.bg_image | img_url: 'master' }}" {% if lazy_loading %}loading="lazy"{% endif %} width="{{ section.settings.bg_image.width }}" height="{{ section.settings.bg_image.height }}" alt="{{ section.settings.bg_image.alt | escape }}">
+      <style>.hero--wrapper--{{ section.id }}{padding:0!important;}</style>
+      {% endif %}
+
+      {% if section.settings.bg_image_mobile != blank %}
+      <img class="w-full {% if section.settings.bg_image != blank %}min-769--hide{% endif %}" src="{{ section.settings.bg_image_mobile | img_url: 'master' }}" {% if lazy_loading %}loading="lazy"{% endif %}  width="{{ section.settings.bg_image_mobile.width }}" height="{{ section.settings.bg_image_mobile.height }}" alt="{{ section.settings.bg_image_mobile.alt | escape }}">
+      {% endif %}
+
+      {% if section.settings.bg_image != blank %}<div class="page-width-no-padding absolute-w-full absolute-center">{% endif %}	
+      <div class="flex hero-height--{{ section.id }}" 
+          style="align-items:{{section.settings.box_v_alignment}};
+                justify-content:{{section.settings.box_h_alignment}};
+                {% if section.settings.custom_height %}height:{{section.settings.desktop_height}}px;{% endif %}
+                {% if section.settings.bg_image != blank %}height:100%!important;{% endif %}">
+          	<div class="hero-inner w-full p-10"
+              style="background-color: {{section.settings.box_bg_color}};
+                    max-width: {{section.settings.text_box_width}}px;
+                    text-align:{{section.settings.text_alignment}};">
+              <h1 class="m-0"
+              >{{ section.settings.title }}</h1>
+              {{ section.settings.paragraph }}
+              {% if section.settings.button_text != blank %}
+              <a href="{{section.settings.button_url}}"><button class="btn btn--solid  btn--white mt-10">{{ section.settings.button_text }}</button></a>
+              {% endif %}
+          </div>
+      </div>
+      {% if section.settings.bg_image != blank %}</div>{% endif %}	
+
+    </div>
+    {% if section.settings.custom_settings_padding == true %}</div>{% endif %}
+    </div>
+  </div>
+
+<style>
+
+  .hero--wrapper--{{ section.id }} {
+  height: calc(100vh - 116px);
+  
+}
+
+  @media (max-width:768px) {
+      .hero--wrapper--{{ section.id }} {
+        height: calc(90vh - 116px);
+        
+      }
+  }
+
+
+  .hero--wrapper--{{ section.id }} img {
+    object-fit:cover;
+    height:100%;
+    object-position: right bottom;
+  }
+
+  @media (max-width:768px) {
+      .hero--wrapper--{{ section.id }} img {
+    object-position: center bottom;
+  }
+  }
+
+  /* Custom Width */
+
+  {% if section.settings.custom_section_settings_width %}
+  .hero--wrapper--{{ section.id }}.page-width {
+      max-width: {{section.settings.custom_width}}px!important;
+      margin:auto;
+    }
+
+  {% endif %}
+  
+
+  /* Custom Height */
+
+  {% if section.settings.custom_height_mobile %}
+
+  @media (max-width:768px) {
+    .hero-height--{{ section.id }} {
+    height: {{section.settings.mobile_height}}px!important;
+  }
+  }
+  
+  {% endif %}
+
+
+  {% if section.settings.custom_settings_padding == true %}
+
+/* Custom Section Space */
+
+.section-{{ section.id }}-padding {
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+}
+
+@media (min-width: 769px) {
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 2 | round: 0 }}px;
+  padding-bottom: {{ section.settings.padding_bottom | times: 2 | round: 0 }}px;
+  }
+}
+
+{% endif %}
+
+/* Styles */
+
+{%- if section.settings.custom_settings_title or section.settings.custom_settings_paragraph -%}
+
+    {% if section.settings.custom_settings_title %}
+    .hero--wrapper--{{ section.id }} .hero-inner h1 {
+      color:{{section.settings.title_color}};
+      font-size:{{section.settings.title_size}}px;
+      line-height:{{section.settings.title_line_height}}px;
+    }
+    {% endif %}
+
+    {% if section.settings.custom_settings_paragraph %}
+    .hero--wrapper--{{ section.id }} .hero-inner p {
+        color:{{section.settings.paragraph_color}};
+        font-size:{{section.settings.paragraph_size}}px;
+      }
+    {% endif %}
+  
+  @media (max-width:768px) {
+    
+    {%- if section.settings.custom_settings_title -%}
+      .hero--wrapper--{{ section.id }} .hero-inner h1 {
+          font-size:{{section.settings.title_size_mobile}}px!important;
+        }
+    {% endif %}
+ 
+    {%- if section.settings.custom_settings_paragraph -%}
+      .hero--wrapper--{{ section.id }} .hero-inner p {
+        font-size:{{section.settings.paragraph_size_mobile}}px!important;
+      }
+   {%- endif -%}
+
+}
+
+{%- endif -%}
+
+/* Text Box Settings */
+
+@media (max-width:768px) {
+
+  .hero-height--{{ section.id }} {
+    align-items:{{section.settings.box_v_alignment_mobile}}!important;
+    justify-content:{{section.settings.box_h_alignment_mobile}}!important;
+  }
+
+  .hero-height--{{ section.id }} .hero-inner {
+    text-align:{{section.settings.text_alignment_mobile}}!important;
+  }
+
+.hero--wrapper--{{ section.id }} .hero-inner {
+      max-width:{{section.settings.text_box_width_mobile}}px!important;
+  }
+
+}
+
+</style>
+
+{% schema %}
+      {
+      "name": "Hero",
+      "settings": [
+      {
+        "type": "header",
+        "content": "Section Style"
+      },
+      {
+        "id": "bg_color",
+        "type": "color",
+        "label" :"Background Color",
+        "default": "transparent"
+      },
+      {
+        "type": "header",
+        "content": "Section Spacing",
+        "info": "Change section space settings and override global settings."
+      },
+      {
+        "type": "checkbox",
+        "id": "section_space",
+        "label": "Turn On",
+        "info": "Top and Bottom margins set in global theme settings",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Section Height",
+        "info": "If you are not using a background image's height, or want to adjust the height for a backgorund image. Turn these settings on for dekstop and mobile."
+      },
+      {
+        "type": "checkbox",
+        "id": "custom_height",
+        "label": "Custom Height Desktop",
+        "info": "Turn On",
+        "default": false
+      },
+      {
+        "type": "range",
+        "id": "desktop_height",
+        "min": 100,
+        "max": 2000,
+        "step": 20,
+        "unit": "px",
+        "label": "Desktop Height",
+        "info": "Min 769px, remember if you have custom padding turned on this will extend the height. This height is for the inner text box technically but controls the height of the entire section.",
+        "default": 640
+      },
+      {
+        "type": "checkbox",
+        "id": "custom_height_mobile",
+        "label": "Custom Height Mobile",
+        "info": "Turn On",
+        "default": false
+      },
+      {
+        "type": "range",
+        "id": "mobile_height",
+        "min": 100,
+        "max": 1000,
+        "step": 20,
+        "unit": "px",
+        "label": "Mobile Height",
+        "info": "Max 768px",
+        "default": 480
+      },
+      {
+        "type": "header",
+        "content": "Section Padding",
+        "info": "Custom padding for the top and bottom of this section. Use with or without the global section space settings. By default you pick the mobile padding. Then it is automatically doubled for desktop. Min 769px+"
+      },
+      {
+        "type": "checkbox",
+        "id": "custom_settings_padding",
+        "label": "Custom Section Padding",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 25
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 25
+      },
+      {
+        "type": "header",
+        "content": "Background Image",
+        "info": "Some times it's easier if you are using the height settings to turn them off when you might want to use the image as it will use it's height. Turning off the padding also helps too. Using image height and adjusting text aorund that works best."
+      },
+      {
+        "id": "bg_image",
+        "type": "image_picker",
+        "label" :"Background Image",
+        "info": "Upload a high-res image, anything 1920px+ (Shopify handles compression)"
+      },
+      {
+        "id": "bg_image_mobile",
+        "type": "image_picker",
+        "label" :"Background Image Mobile",
+        "info": "Max Width 768px is suggested, always upload image size in proportion to the width and height of the container settings you have set."
+      },
+      {
+        "type": "header",
+        "content": "Lazy Loading"
+      },
+      {
+        "id": "lazy_loading",
+        "type": "checkbox",
+        "label" :"Turn On",
+        "default": false,
+        "info": "If this collection sits under the fold, you can turn on the lazy loading attribute."
+      },
+      {
+          "type": "header",
+          "content": "Text Box Settings"
+      },
+      {
+        "id": "box_bg_color",
+        "type": "color",
+        "label" :"Box Background Color",
+        "default": "transparent"
+      },
+      {
+        "type": "range",
+        "id": "text_box_width",
+        "min": 100,
+        "max": 2000,
+        "step": 20,
+        "unit": "px",
+        "label": "Text Box Width",
+        "default": 1000
+      },
+      {
+      "type": "range",
+      "id": "text_box_width_mobile",
+      "min": 10,
+      "max": 600,
+      "step": 10,
+      "unit": "px",
+      "label": "Text Box Width mobile",
+      "default": 290,
+    "info": "Max Width 768px"
+    },
+      {
+        "type": "header",
+        "content": "Box Alignment",
+        "info": "Min Width 769px"
+      },
+      {
+        "type": "select",
+        "id": "box_h_alignment",
+        "label": "Box Horizontal Alignment",
+        "options": [
+        {
+            "value": "flex-start",
+            "label": "Left"
+        },
+        {
+            "value": "center",
+            "label": "Center"
+        },
+        {
+            "value": "flex-end",
+            "label": "Right"
+        }
+        ],
+        "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "box_v_alignment",
+      "label": "Box Vertical Alignment",
+      "options": [
+      {
+          "value": "flex-start",
+          "label": "Top"
+      },
+      {
+          "value": "center",
+          "label": "Center"
+      },
+      {
+          "value": "flex-end",
+          "label": "Bottom"
+      }
+      ],
+      "default": "center"
+      },
+      {
+          "type": "select",
+          "id": "text_alignment",
+          "label": "Text Alignment",
+          "options": [
+          {
+              "value": "left",
+              "label": "Left"
+          },
+          {
+              "value": "center",
+              "label": "Center"
+          },
+          {
+              "value": "right",
+              "label": "Right"
+          }
+          ],
+          "default": "center"
+          },
+          {
+              "type": "header",
+              "content": "Text Settings"
+          },
+      {
+        "type": "header",
+        "content": "Box Alignment Mobile",
+        "info": "Max Width 768px"
+      },
+      {
+        "type": "select",
+        "id": "box_h_alignment_mobile",
+        "label": "Box Horizontal Alignment",
+        "options": [
+        {
+            "value": "flex-start",
+            "label": "Left"
+        },
+        {
+            "value": "center",
+            "label": "Center"
+        },
+        {
+            "value": "flex-end",
+            "label": "Right"
+        }
+        ],
+        "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "box_v_alignment_mobile",
+      "label": "Box Vertical Alignment",
+      "options": [
+      {
+          "value": "flex-start",
+          "label": "Top"
+      },
+      {
+          "value": "center",
+          "label": "Center"
+      },
+      {
+          "value": "flex-end",
+          "label": "Bottom"
+      }
+      ],
+      "default": "center"
+      },
+      {
+          "type": "select",
+          "id": "text_alignment_mobile",
+          "label": "Text Alignment",
+          "options": [
+          {
+              "value": "left",
+              "label": "Left"
+          },
+          {
+              "value": "center",
+              "label": "Center"
+          },
+          {
+              "value": "right",
+              "label": "Right"
+          }
+          ],
+          "default": "center"
+          },
+          {
+              "type": "header",
+              "content": "Text Settings"
+          },
+          {
+              "id": "title",
+              "type": "textarea",
+              "label" :"Title",
+              "default": "Excepteur sint occaecat"
+          },
+          {
+              "id": "paragraph",
+              "type": "richtext",
+              "label" :"Paragraph",
+              "default": "<p>Lorem ipsum dolor sit amet.</p>"
+          },
+          {
+              "id": "button_text",
+              "type": "text",
+              "label" :"Button Text",
+              "default": "SHOP NOW",
+              "info": "Remove to hide the button, if not needed."
+          },
+          {
+              "id": "button_url",
+              "type": "url",
+              "label" :"Button URL"
+          },
+          {
+            "type": "header",
+            "content": "Title",
+            "info": "Override the global theme style settings."
+          },
+          {
+            "id": "custom_settings_title",
+            "type": "checkbox",
+            "label" :"Add Custom Settings",
+            "default": false,
+            "info": "Override settings applied in main 'Theme Settings' area for the title."
+          },
+          {
+              "id": "title_color",
+              "type": "color",
+              "label" :"Color",
+              "default": "#000"
+          },
+          {
+              "type": "range",
+              "id": "title_size",
+              "min": 20,
+              "max": 120,
+              "step": 1,
+              "unit": "px",
+              "label": "Desktop Size",
+              "info": "769px+",
+              "default": 65
+          },
+          {
+            "type": "range",
+            "id": "title_line_height",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "px",
+            "label": "Line Height Desktop",
+            "default": 75,
+            "info": "Min (769px+)"
+          },
+          {
+              "type": "range",
+              "id": "title_size_mobile",
+              "min": 0,
+              "max": 100,
+              "step": 1,
+              "unit": "px",
+              "label": "Mobile Size",
+              "info": "Max 768px",
+              "default": 20
+          },
+          {
+            "type": "range",
+            "id": "title_mobile_line_height",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "px",
+            "label": "Line Height Mobile",
+            "default": 35,
+            "info": "Min (769px+)"
+          },
+          {
+            "type": "header",
+            "content": "Paragraph"
+          },
+            {
+              "id": "custom_settings_paragraph",
+              "type": "checkbox",
+              "label" :"Add Custom Settings",
+              "default": false,
+              "info": "Override settings applied in main 'Theme Settings' area for the paragraph text."
+            },
+            {
+                "id": "paragraph_color",
+                "type": "color",
+                "label" :"Color",
+                "default": "#000"
+            },
+            {
+                "type": "range",
+                "id": "paragraph_size",
+                "min": 10,
+                "max": 100,
+                "step": 1,
+                "unit": "px",
+                "label": "Desktop Size",
+                "info": "769px+",
+                "default": 25
+              },
+              {
+                "type": "range",
+                "id": "paragraph_line_height",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "unit": "px",
+                "label": "Line Height Desktop",
+                "default": 35,
+                "info": "Min (769px+)"
+              },
+              {
+                "id": "paragraph_size_mobile",
+                "min": 10,
+                "max": 100,
+                "step": 1,
+                "unit": "px",
+                "label": "Mobile Size",
+                "info": "Max 768px",
+                "type": "range",
+                  "default": 16
+              },
+              {
+                "type": "range",
+                "id": "paragraph_line_height_mobile",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "unit": "px",
+                "label": "Line Height Mobile",
+                "default": 26,
+                "info": "Min (769px+)"
+              }
+   ],
+    "presets": [
+        {
+           "name": "Hero"
+        }
+    ]
+}
+{% endschema %}
